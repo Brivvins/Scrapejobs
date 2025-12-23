@@ -3,7 +3,12 @@ spring:
     url: jdbc:postgresql://localhost:5432/scrapejobsdb
     username: scrapejobs
     password: scrapejobs
+
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     show-sql: true
+    open-in-view: false
+
+server:
+  port: 8080
