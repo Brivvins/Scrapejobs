@@ -9,5 +9,4 @@ public class ScrapejobsApplication {
     public static void main(String[] args) {
         SpringApplication.run(ScrapejobsApplication.class, args);
     }
-
 }
