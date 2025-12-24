@@ -2,10 +2,10 @@ package com.briv.scrapejobs.model.job;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Job {
 
     @Id
@@ -39,8 +40,8 @@ public class Job {
     private String jobType;
     private String salaryRange;
 
-    private LocalDate postedDate;
-    private LocalDate expiresDate;
+    private String postedDate;
+//    private LocalDate expiresDate;
 
     @Column(updatable = false)
     private LocalDateTime createdAt =  LocalDateTime.now();
