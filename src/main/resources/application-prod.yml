@@ -10,5 +10,8 @@ spring:
       ddl-auto: update
     show-sql: false
 
+jwt:
+ secret: ${jwt.secret}
+
 server:
   port: ${PORT:8080}
