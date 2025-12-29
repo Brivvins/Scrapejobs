@@ -1,4 +1,4 @@
-package com.briv.scrapejobs.scheduler;
+package com.briv.scrapejobs.util.scheduler;
 
 import com.briv.scrapejobs.service.scraper.ScraperService;
 import lombok.RequiredArgsConstructor;
