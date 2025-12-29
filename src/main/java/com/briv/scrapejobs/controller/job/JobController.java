@@ -1,12 +1,11 @@
 package com.briv.scrapejobs.controller.job;
 
-import com.briv.scrapejobs.model.job.Job;
+import com.briv.scrapejobs.dto.job.JobSearchRequest;
+import com.briv.scrapejobs.domain.job.Job;
 import com.briv.scrapejobs.repository.job.JobRepository;
+import com.briv.scrapejobs.service.job.JobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,16 +15,11 @@ import org.springframework.web.bind.annotation.*;
 public class JobController {
 
     private final JobRepository jobRepository;
+    private final JobService jobService;
 
-    @GetMapping
-    public ResponseEntity<Page<Job>> getAllJobs(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "10") int size,
-            @RequestParam(defaultValue = "createdAt") String sortBy
-    ) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).descending());
-        Page<Job> jobs = jobRepository.findAll(pageable);
-        return ResponseEntity.ok(jobs);
+    @GetMapping("/search")
+    public ResponseEntity<Page<Job>> searchJobs(@ModelAttribute JobSearchRequest req) {
+        return jobService.searchJobs(req);
     }
 
 
