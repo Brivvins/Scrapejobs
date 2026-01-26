@@ -27,24 +27,24 @@ public class AuthService {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
 
-    public void Register(RegisterRequest request) {
-        String email = request.getEmail();
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already exists");
-        }
-
-        User newUser = User.builder()
-                .email(email)
-                .password(encodedPassword)
-                .role(Role.USER)
-                .enabled(true)
-                .createdAt(LocalDateTime.now())
-                .build();
-
-        userRepository.save(newUser);
-    }
+//    public void Register(RegisterRequest request) {
+//        String email = request.getEmail();
+//        String encodedPassword = passwordEncoder.encode(request.getPassword());
+//
+//        if (userRepository.existsByEmail(request.getEmail())) {
+//            throw new RuntimeException("Email already exists");
+//        }
+//
+//        User newUser = User.builder()
+//                .email(email)
+//                .password(encodedPassword)
+//                .role(Role.USER)
+//                .enabled(true)
+//                .createdAt(LocalDateTime.now())
+//                .build();
+//
+//        userRepository.save(newUser);
+//    }
 
 
     public String Login(LoginRequest request) {
